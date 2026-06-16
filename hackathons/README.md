@@ -8,7 +8,7 @@
 >
 > **Maintenance (CLAUDE.md contract):** when a session changes a component a folder reuses, update
 > that folder's "Components reused" manifest + stub in the same PR.
-> **Last updated:** 2026-06-14 (Session E).
+> **Last updated:** 2026-06-16 (Session F — Mantle 2-track update + CRITERIA.md).
 
 ---
 
@@ -17,11 +17,11 @@
 | Folder | Hackathon | Prize | Deadline | Fit / what we ship |
 |---|---|---|---|---|
 | `bnb-ai-trading-agent/` | BNB Hack: AI Trading Agent (CMC × Trust Wallet) | $36k | **2026-06-21** | Track 2 Strategy Skill (drop-in) + Track 1 live BSC agent (TWAK adapter) |
-| `mantle-turing-test/` | Mantle Turing Test 2026 — Phase 2 | $100k | **2026-06-15** ⚠️ | "AI Alpha & Data" — whale/anomaly signals + Discord + ERC-8004 identity |
+| `mantle-turing-test/` | Mantle Turing Test 2026 — Phase 2 | $100k | DoraHacks — **confirm (old 2026-06-15 is past)** | **2 tracks entered:** Alpha & Data (Mirana, ship-ready) + Trading & Strategy (Bybit+BGA, on-chain stretch). Submission repo: `smart-money-trading`. Rubric → `mantle-turing-test/CRITERIA.md` |
 | `croo-agent/` | CROO Agent Hackathon | ~$10.2k | **2026-07-12** | Personas as paid, A2A-callable agents via CAP |
 
-*Operator: "screw deadlines, do our best." Noted — Mantle is ~1 day, so it's the lightest scope
-(signal-only, no execution); BNB has the most reuse value.*
+*Operator: "screw deadlines, do our best." Mantle entered TWO tracks (Alpha & Data = ship-ready
+signal product; Trading & Strategy = the on-chain/Bybit stretch). BNB has the most code-reuse value.*
 
 ---
 

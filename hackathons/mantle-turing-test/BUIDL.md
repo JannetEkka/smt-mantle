@@ -1,7 +1,9 @@
 # Turing Test Hackathon 2026 — BUIDL submission (paste-ready)
 
-> Track target: **AI Alpha & Data** (smart-money tracking + on-chain anomaly detection via
-> Telegram/Discord). Signal-only — no execution. Theme to lean on: **radical transparency**.
+> Tracks entered (both; max 2 allowed): **AI Alpha & Data** (Mirana Ventures) — lead, smart-money +
+> on-chain anomaly detection via Telegram/Discord, signal-only — and **AI Trading & Strategy** (Bybit +
+> BGA) — on-chain extension (Bybit adapter + macro-REGIME Mantle contract). Theme: **radical
+> transparency**. Full rubric → `CRITERIA.md`.
 
 ---
 
@@ -22,7 +24,7 @@ Smart Money Trading (SMT)
 **Is this BUIDL an AI Agent?** **Yes**
 
 **Links**
-- GitHub: `https://github.com/JannetEkka/smt-weex-trading-bot`
+- GitHub (submission repo): `https://github.com/JannetEkka/smart-money-trading`
 - Project website: `https://smt-aiquant-bot.streamlit.app/`
 - Demo video: *(optional — record a 2-min Streamlit + alert walkthrough; can add after submit)*
 - Social links: `https://x.com/JTechSMT` (SMT project) · `https://www.linkedin.com/in/jannet-akanksha-ekka-a18692122/`
@@ -67,4 +69,5 @@ learning + validation stack, and an XAI layer. Fluent in Vertex AI / BigQuery ML
 ## Submission notes
 - Open-source repo (public). **Tuned parameters / per-pair research kept private** (the edge);
   architecture, XAI, and learning approach are fully open.
-- AI Alpha & Data track; signal-only (no on-chain execution); ERC-8004 identity on Mantle.
+- Entered **AI Alpha & Data** (lead, signal-only) + **AI Trading & Strategy** (on-chain extension);
+  ERC-8004 identity on Mantle. Grand Champion / 20-Deploy awards need Mantle deployment — see `CRITERIA.md`.
