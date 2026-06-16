@@ -24,8 +24,8 @@ Smart Money Trading (SMT)
 **Is this BUIDL an AI Agent?** **Yes**
 
 **Links**
-- GitHub (submission repo): `https://github.com/JannetEkka/smart-money-trading`
-- Project website: `https://jannetekka.github.io/smart-money-trading/`
+- GitHub (submission repo): `https://github.com/JannetEkka/smt-mantle`
+- Project website: `https://jannetekka.github.io/smt-mantle/`
 - Demo video: *(record a ≥2-min walkthrough: public SMT World dashboard → alert with its "why" → the on-chain decision on Mantle Explorer)*
 - Social links: `https://x.com/JTechSMT` (SMT project) · `https://www.linkedin.com/in/jannet-akanksha-ekka-a18692122/`
 

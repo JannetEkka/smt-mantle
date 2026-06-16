@@ -14,7 +14,9 @@ import sys
 import pytest
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BRIDGE = os.path.join(REPO, "hackathons", "mantle-turing-test")
+# The bridge lives in hackathons/mantle-turing-test/ (main repo) or top-level mantle/ (submission repo).
+BRIDGE = next((os.path.join(REPO, c) for c in ("mantle", "hackathons/mantle-turing-test")
+               if os.path.isdir(os.path.join(REPO, c))), os.path.join(REPO, "hackathons", "mantle-turing-test"))
 
 
 def _load(name, filename):
@@ -51,7 +53,7 @@ def test_agent_card_has_required_fields():
     card = onchain.build_agent_card(registry_address="0xABC", agent_id=1)
     assert card["name"] and card["skills"] and card["transparency"]
     assert card["registry"]["contract"] == "0xABC" and card["registry"]["agentId"] == 1
-    assert card["endpoints"]["repo"].endswith("smart-money-trading")
+    assert card["endpoints"]["repo"].endswith("smt-mantle")
 
 
 # ── on-chain bridge degrades gracefully (no web3 / no config) ──────────────────

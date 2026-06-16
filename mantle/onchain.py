@@ -63,8 +63,8 @@ def build_agent_card(
         "owner": "@EkkaJanny96",
         "skills": ["smart-money-tracking", "on-chain-anomaly-detection", "explainable-signals"],
         "endpoints": {
-            "dashboard": "https://jannetekka.github.io/smart-money-trading/",
-            "repo": "https://github.com/JannetEkka/smart-money-trading",
+            "dashboard": "https://jannetekka.github.io/smt-mantle/",
+            "repo": "https://github.com/JannetEkka/smt-mantle",
             "discord": discord or "<discord-invite-or-webhook>",
         },
         "registry": {"chain": network, "contract": registry_address or "<deployed-address>",

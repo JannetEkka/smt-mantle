@@ -2,7 +2,7 @@
 
 **Hackathon:** The Turing Test Hackathon 2026 — Phase 2 "AI Awakening" · Mantle ecosystem · **$100K total** ·
 DoraHacks. Full rubric + awards (official): https://docs.byreal.io/turing-test-hackathon/evaluation-criteria
-**Submission repo (operator-linked):** https://github.com/JannetEkka/smart-money-trading
+**Submission repo (operator-linked):** https://github.com/JannetEkka/smt-mantle
 
 **Tracks entered (max 2 allowed — operator chose BOTH, 2026-06-16):**
 1. **AI Alpha & Data** — sponsor **Mirana Ventures**. *Strong, natural fit (ship-ready).*

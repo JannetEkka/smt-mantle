@@ -23,20 +23,20 @@ strategy's private parameters).
 ```bash
 pip install pytest
 pytest -q                                          # 193 passing — incl. the validation gates + faithfulness
-python3 hackathons/mantle-turing-test/alert_bot.py # offline demo: personas → Judge → a ≤500-char "why" alert
+python3 mantle/alert_bot.py # offline demo: personas → Judge → a ≤500-char "why" alert
 ```
 - Validation gates (Session F): `smt/learning/validation/{dsr,pbo,fdr,cpcv,conformal,kde,gate}.py`
 - Faithfulness + input-cascade: `smt/learning/faithfulness.py` · ground-truth +2h/+4h join: `smt/learning/groundtruth.py`
 - Architecture + Mermaid diagrams: **`docs/ARCHITECTURE.md`** (§9 = the validation/faithfulness visuals)
 
 ## On-chain (Mantle)
-- Contract: **`hackathons/mantle-turing-test/contracts/SMTAgentRegistry.sol`** — ERC-8004-style identity
+- Contract: **`mantle/contracts/SMTAgentRegistry.sol`** — ERC-8004-style identity
   + reputation + **`recordDecision`** (the AI function callable on-chain) + `gradeDecision` (reputation
   from realized +2h/+4h accuracy). Deploy/verify runbook + the Python bridge (`onchain.py`) are in that folder.
 - Deployed address: _added on deploy (Mantle Sepolia/mainnet)._
 
 ## Live & links
-- **Public dashboard (SMT World):** https://jannetekka.github.io/smart-money-trading/
+- **Public dashboard (SMT World):** https://jannetekka.github.io/smt-mantle/
 - **X:** https://x.com/JTechSMT · built solo by [@EkkaJanny96](https://x.com/EkkaJanny96)
 
 ## Open vs private (the alpha boundary)

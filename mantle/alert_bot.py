@@ -7,7 +7,7 @@ trading logic — the personas + Judge already decide.
 Flow:  context → personas vote → JudgePersona.decide → ≤500-char "why" alert
        → Discord/Telegram → (optional) Mantle on-chain record via onchain.MantleBridge.
 
-Run live:  python3 hackathons/mantle-turing-test/alert_bot.py
+Run live:  python3 mantle/alert_bot.py
 (personas degrade to NEUTRAL with no API keys, so the demo runs offline.)
 """
 
@@ -19,8 +19,13 @@ import sys
 import urllib.request
 from typing import Any, Dict, List, Optional
 
-# Make `smt` importable when run directly from this hyphenated hackathon folder.
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+# Make `smt` importable when run directly — works whether this file lives in
+# mantle/ (main repo) or top-level mantle/ (submission repo).
+_here = os.path.dirname(os.path.abspath(__file__))
+for _cand in (os.path.join(_here, ".."), os.path.join(_here, "..", "..")):
+    if os.path.isdir(os.path.join(_cand, "smt")):
+        sys.path.insert(0, os.path.abspath(_cand))
+        break
 
 from smt.personas.base import PersonaVote  # noqa: E402
 from smt.personas.judge import JudgePersona  # noqa: E402
