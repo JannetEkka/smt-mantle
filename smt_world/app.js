@@ -1,6 +1,42 @@
 // SMT World — prototype (mock data; real wiring reads smt/ exp records later).
 // Visualizes SMT "thinking out loud": 6 personas argue in chat bubbles, the Judge decides.
 
+// ── Mantle on-chain config ───────────────────────────────────────────────
+// After deploying SMTAgentRegistry (see mantle/ runbook), paste the address +
+// agentId here. The badge then links to Mantle Explorer and — if ethers loaded —
+// shows the LIVE on-chain reputation. Empty contract = "deploy pending" (still valid).
+const MANTLE = {
+  network:  "Mantle Sepolia",
+  contract: "",                                  // 0x… deployed SMTAgentRegistry
+  agentId:  1,
+  rpc:      "https://rpc.sepolia.mantle.xyz",
+  explorer: "https://explorer.sepolia.mantle.xyz",
+};
+const REGISTRY_ABI = ["function reputationBps(uint256) view returns (uint256)"];
+
+function mantleBadge(){
+  if(MANTLE.contract){
+    return `<a class="onchain ok" target="_blank" rel="noopener"
+              href="${MANTLE.explorer}/address/${MANTLE.contract}"
+              title="Every verdict is written on-chain via SMTAgentRegistry.recordDecision">
+              ⛓ Recorded on Mantle · <span id="repText">verify ↗</span></a>`;
+  }
+  return `<span class="onchain pending" title="Deploy SMTAgentRegistry, then set MANTLE.contract in app.js">⛓ On-chain record · deploy pending</span>`;
+}
+
+// Read-only: pull the agent's on-chain reputation (correct/graded, bps) for display.
+// No wallet, no keys — just a public RPC read. Never throws into the UI.
+async function refreshReputation(){
+  if(!MANTLE.contract || typeof ethers === "undefined") return;
+  try{
+    const provider = new ethers.JsonRpcProvider(MANTLE.rpc);
+    const c = new ethers.Contract(MANTLE.contract, REGISTRY_ABI, provider);
+    const bps = await c.reputationBps(MANTLE.agentId);
+    const el = document.getElementById("repText");
+    if(el) el.textContent = `on-chain accuracy ${(Number(bps)/100).toFixed(0)}% · verify ↗`;
+  }catch(e){ /* keep the static badge — never break the demo */ }
+}
+
 const PERSONA = {
   flow:      {name:"Flow",      pic:"FL", color:"#36c7a0"},
   technical: {name:"Technical", pic:"TC", color:"#7aa2ff"},
@@ -82,6 +118,8 @@ function selectPair(p){
   const v = document.getElementById("verdict");
   v.className = "verdict "+d.action;
   v.innerHTML = `${d.action} <small>conviction ${(d.conf*100).toFixed(0)}%</small>`;
+  document.getElementById("onchain").innerHTML = mantleBadge();
+  refreshReputation();
 
   // drill chips
   document.getElementById("drill").innerHTML =
@@ -104,7 +142,10 @@ function selectPair(p){
       <div class="body"><div class="row1"><span class="who">The Judge</span>
         <span class="vote dot ${d.action}">${d.action}</span>
         <span class="pct">${(d.conf*100).toFixed(0)}%</span></div>
-        <div class="say">${d.why}</div></div></div>`;
+        <div class="say">${d.why}</div>
+        <div class="onchain-note">${MANTLE.contract
+          ? `⛓ This verdict is recorded on Mantle (ERC-8004) — <a href="${MANTLE.explorer}/address/${MANTLE.contract}" target="_blank" rel="noopener">verify ↗</a>`
+          : `⛓ Every verdict is recorded on Mantle (ERC-8004) once deployed`}</div></div></div>`;
   document.getElementById("chat").innerHTML = html;
 }
 

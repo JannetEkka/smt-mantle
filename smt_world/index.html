@@ -50,7 +50,7 @@
       <div id="view-signals">
         <header class="main-head">
           <div><h2 id="pairTitle">BTC</h2><span class="muted">SMT is thinking out loud — every persona, then the verdict.</span></div>
-          <div id="verdict" class="verdict"></div>
+          <div class="head-right"><div id="verdict" class="verdict"></div><div id="onchain"></div></div>
         </header>
         <div class="drill" id="drill"><!-- drill chips --></div>
         <div id="chat" class="chat"><!-- persona chat bubbles + judge --></div>
@@ -74,6 +74,8 @@
     <div class="popup-card"><button class="popup-x" onclick="closePopup()">✕</button><div id="popupBody"></div></div>
   </div>
 
+  <!-- ethers (optional): enables a read-only on-chain reputation fetch; UI degrades cleanly if blocked -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.1/dist/ethers.umd.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
