@@ -4,7 +4,7 @@ EPIC-B,Strategies + execution + tracker,done,71
 EPIC-C,Personas + JUDGE + context,done,66
 EPIC-D,Learning loop,done,20
 EPIC-E,Daemon loop end-to-end,done,12
-EPIC-F,Validation gates,pending,0
+EPIC-F,Validation gates,done,20
 EPIC-G,Hierarchical + live-PBO,pending,0
 EPIC-H,Explanation layer,pending,0
 EPIC-I,Shadow run + refit,pending,0

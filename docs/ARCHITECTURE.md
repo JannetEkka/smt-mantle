@@ -25,12 +25,15 @@ smt/
 └── learning/
     ├── validation/
     │   ├── cpcv.py  dsr.py  pbo.py  fdr.py  conformal.py  kde.py
+    │   ├── _stats.py    # pure-Python norm CDF/PPF + moments (no numpy)
+    │   └── gate.py      # validate_candidate() — DSR/PBO/FDR ship-gate
     ├── optimizer.py     # Optuna TPE
     ├── bandit.py        # Thompson Sampling regime-conditional bandit
     ├── reward.py        # net-fees + fat-tail bonus − overtrading penalty
     ├── hierarchical.py  # PyMC partial-pooling across 8 pairs
     ├── synthetic.py     # known-edge regime-switching simulator
-    └── faithfulness.py  # counterfactual persona-flip eval
+    ├── faithfulness.py  # counterfactual persona-flip + input-cascade detector
+    └── groundtruth.py   # +2h/+4h kline join + per-persona reliability + fwd-regime clf
 ```
 
 ## Diagrams (Mermaid — render on GitHub)
@@ -137,9 +140,11 @@ flowchart LR
   CO --> BD["bandit seed (gap-8 cold start)"]
   HI["hierarchical pooling"] --> OPT["TPE optimizer"]
   RW --> OPT
-  OPT --> VAL["validation — DSR / PBO / FDR / CPCV / conformal"]
-  FA["faithfulness flip"] --> VAL
-  VAL --> LP[("learned_params.json")]
+  OPT --> VAL["gate.validate_candidate — DSR>0 & PBO≤0.20 & FDR≤0.10"]
+  FA["faithfulness flip + input-cascade"] --> VAL
+  VAL -->|PASS| LP[("learned_params.json")]
+  VAL -->|REJECT| OPT
+  VAL --> CF["CPCV → conformal interval (dashboard band)"]
   BD --> DG["daemon decision-gate"]
 ```
 
@@ -153,8 +158,10 @@ flowchart LR
   JF --> SPL["corpus: CMT/UAT split + train/validate"]
   SPL --> SEED["seed bandit"]
   SPL --> REW["reward + direction-quality"]
-  SPL --> GT["Session F: +2h/+4h kline join → direction_correct"]
-  GT --> FF["faithfulness + per-persona reliability"]
+  SPL --> GT["groundtruth: +2h/+4h kline join → direction_correct"]
+  GT -->|real +Nh accuracy| REW
+  GT --> FF["faithfulness + per-persona reliability (persona_audit.json)"]
+  FF --> WV["weight verdicts: CONFIRM FLOW / DEMOTE SENTIMENT / WHALE@high-conv"]
 ```
 
 ### 7. Lanes & exit cascade (per pair)
@@ -192,7 +199,79 @@ flowchart TD
   SMT --> ADP["execution adapters — WEEX (now) · BSC/Mantle (next)"]
 ```
 
-## Boundaries (why this decomposition)
+### 9. Session F — validation gates & faithfulness (concept visuals)
+> The bot's bullshit filter. Half 1 (DSR/PBO/FDR/CPCV/conformal) refuses to trust a **lucky
+> backtest**; Half 2 (flip + cascade) refuses to trust a **fake explanation**; underneath both, the
+> ground-truth join grades everything against **independent reality** instead of the bot's own logs.
+
+**The villain — overfitting (why every gate exists):**
+```
+try 2000 random settings on past data, keep the "best":
+  ░░░░░░░░░▓░░░░░░░   ▓ = looks amazing BY LUCK
+  (like flipping 1000 coins, keeping the one that hit 9/10 heads — it's not "good at heads")
+deploy live → it falls apart.  Session F = the tests that tell luck from skill.
+```
+
+**DSR — Deflated Sharpe: discount the score for how many tries it took**
+```mermaid
+flowchart LR
+  S["strategy Sharpe (looks great)"] --> Q{"how many configs tried?"}
+  Q -->|"few"| L["bar stays LOW"]
+  Q -->|"2000"| H["bar rises to best-of-2000-luck"]
+  L --> V{"Sharpe beats the bar?"}
+  H --> V
+  V -->|yes| P["DSR > 0 ✅ ship"]
+  V -->|no| R["DSR < 0 ❌ reject"]
+```
+
+**PBO — does the in-sample winner survive out-of-sample?**
+```
+split history:  [ half A ]  [ half B ]
+ pick best on A  ─────────▶  test it on B
+   still good on B → real edge      → PBO low  ✅
+   bombs on B      → memorized luck → PBO > 0.20 ❌
+ "aced the practice test, bombed the real exam"
+```
+
+**FDR — don't shout 'edge!' every time noise pings** · **CPCV — test unseen data without cheating**
+```
+FDR (8 pairs × many cells):              CPCV (purge + embargo):
+  ███ tiny p = real    ░░░ big p = noise   time → [train][PURGE][TEST][EMBARGO][train]
+  keep fakes ≤ 10% of "discoveries"                       ↑drop overlap   ↑drop leak
+  none survive → reject (fdr > 0.10)       no future leaks into the past → honest OOS Sharpe
+```
+
+**Conformal — an honest band, not a fake exact number**
+```
+  $20 |───────●───────| $80      "≈90% sure tomorrow lands in here"
+         expected $50             (vs pretending you know it's exactly $50)
+```
+
+**Faithfulness flip — is the bot's 'why' real, or made up?**
+```mermaid
+flowchart LR
+  D["real decision (e.g. LONG)"] --> F["flip ONE persona's vote"]
+  F --> M{"did the decision move?"}
+  M -->|yes| OK["that persona really mattered ✅ ship the 'why'"]
+  M -->|no| NO["the reason was fiction ❌ don't ship it"]
+```
+
+**Input-cascade — 6 advisors agreeing, or 1 broken feed wearing 6 hats?**
+```
+all personas agree ─┬─ independently?      → real consensus ✅
+                    └─ all reading 1 feed? → one opinion ×6 ❌  (the V3.2.124 "wide net of wrong")
+```
+
+**Ground-truth join — stop grading your own homework**
+```mermaid
+flowchart LR
+  T["bot trade: entry_price + ts"] --> B["pull INDEPENDENT Binance price at +2h / +4h"]
+  B --> C{"price went the bot's way?"}
+  C -->|yes| Y["direction_correct = true"]
+  C -->|no| N["direction_correct = false"]
+  Y --> RW["feeds reward on REAL accuracy"]
+  N --> RW
+```
 
 1. **No trading logic in daemon.** V6.0 mistake: 14.6K-line daemon
    mixed loop + logging + entry rules + exit rules + WEEX quirks. Now:

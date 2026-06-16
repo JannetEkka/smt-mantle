@@ -5,8 +5,10 @@ function (smt.learning.reward).
 
 Session D pulls forward a MINIMAL, dependency-free Gaussian KDE (Silverman
 bandwidth) so reward.FatTailBonus can be KDE-weighted without numpy/scipy.
-Session F extends this with cross-validated bandwidth + the conformal prior
-(MAPIE). Until then `kde_fit` returns a usable density estimator.
+Session F extends this with a leave-one-out cross-validated bandwidth
+(`cv_bandwidth`) for the fat-tail / conformal density; the conformal interval
+itself lives in smt.learning.validation.conformal. `kde_fit` always returns a
+usable density estimator.
 """
 
 from __future__ import annotations
@@ -95,6 +97,51 @@ class GaussianKDE:
             else:
                 hi = mid
         return (lo + hi) / 2.0
+
+    def loo_log_likelihood(self) -> float:
+        """Leave-one-out log-likelihood — the CV objective for bandwidth choice.
+
+        Each point's density is estimated from the OTHER n−1 points, so an
+        over-narrow bandwidth (which would spike on each held-out point) is
+        penalized rather than rewarded.
+        """
+        if self.n < 2:
+            return float("-inf")
+        norm = 1.0 / ((self.n - 1) * self.bandwidth * SQRT_2PI)
+        total = 0.0
+        for i, xi in enumerate(self.data):
+            acc = 0.0
+            for j, xj in enumerate(self.data):
+                if i == j:
+                    continue
+                u = (xi - xj) / self.bandwidth
+                acc += math.exp(-0.5 * u * u)
+            dens = norm * acc
+            total += math.log(dens) if dens > 0.0 else -50.0
+        return total
+
+
+def cv_bandwidth(data: Iterable[float], candidates: Optional[List[float]] = None) -> float:
+    """Leave-one-out CV bandwidth: the grid point maximizing LOO log-likelihood.
+
+    Defaults to a multiplicative grid around Silverman's rule. Falls back to
+    Silverman for n < 3. Pure-Python, O(n²·|grid|) — fine for the small return
+    samples the reward/conformal layers feed it.
+    """
+    pts = [float(x) for x in data]
+    if len(pts) < 3:
+        return silverman_bandwidth(pts)
+    base = silverman_bandwidth(pts)
+    if candidates is None:
+        candidates = [base * m for m in (0.25, 0.4, 0.6, 0.8, 1.0, 1.3, 1.7, 2.2, 3.0)]
+    best_bw, best_ll = base, float("-inf")
+    for bw in candidates:
+        if bw <= 0:
+            continue
+        ll = GaussianKDE(pts, bw).loo_log_likelihood()
+        if ll > best_ll:
+            best_ll, best_bw = ll, bw
+    return best_bw
 
 
 def kde_fit(data: Iterable[float], bandwidth: Optional[float] = None) -> GaussianKDE:

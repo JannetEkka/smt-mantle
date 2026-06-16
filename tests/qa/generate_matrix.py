@@ -33,6 +33,7 @@ EPIC_BY_FILE = {
     "tests/test_learning_smoke.py": "D",
     "tests/test_daemon_smoke.py": "E",
     "tests/test_dune_smoke.py": "E",
+    "tests/test_validation_smoke.py": "F",
 }
 EPIC_SESSION = {
     "A": "Scaffold + archive", "B": "Strategies + execution + tracker",
@@ -41,7 +42,7 @@ EPIC_SESSION = {
     "G": "Hierarchical + live-PBO", "H": "Explanation layer",
     "I": "Shadow run + refit", "J": "Production restart",
 }
-DONE_EPICS = {"A", "B", "C", "D", "E"}
+DONE_EPICS = {"A", "B", "C", "D", "E", "F"}
 
 # Test-type classifier (function-name based). Smoke is the default for the
 # Session A–D files; Session E introduced the integration/e2e/unit split.
@@ -58,13 +59,20 @@ TYPE_BY_NODE = {
     "test_execute_sql_returns_execution_id": "unit",
     "test_run_sql_polls_to_completion": "unit",
     "test_failure_degrades_to_none": "unit",
+    # Session F — validation gates: a replayed-market backtest + a locked-output regression.
+    "test_backtest_synthetic_book_passes_validation_gates": "backtest",
+    "test_regression_persona_weight_verdicts_locked": "regression",
 }
 
 # Severity rubric (README): S1 money/data/direction/security; S3 imports/defaults/
 # content checks; S2 otherwise (a feature degrades but there's a workaround).
 S1_KW = ("fee", "hard_block", "200d", "_block", "block_", "direction_quality",
          "all_required_fields", "cycle_runs", "cycle_writes", "bandit_gate",
-         "fat_tail", "overtrading", "capitulation", "veto", "partial_close")
+         "fat_tail", "overtrading", "capitulation", "veto", "partial_close",
+         # Session F: gates that decide whether a money-risking candidate ships,
+         # plus direction-correctness — all S1 (money / direction).
+         "rejects_overfit", "validation_gate", "no_discovery", "single_breach",
+         "direction_correct", "per_lane", "faithfulness", "cascade_flags")
 S3_KW = ("import", "cold_start", "position_pct", "prompt_marks", "default_space",
          "select_playbook", "roundtrip")
 
