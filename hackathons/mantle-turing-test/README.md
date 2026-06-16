@@ -1,7 +1,7 @@
 # Mantle Turing Test 2026 — Smart Money Trading
 
 **Hackathon:** The Turing Test Hackathon 2026 — Phase 2 "AI Awakening" · Mantle ecosystem · **$100K total** ·
-DoraHacks. Full rubric + awards → **`CRITERIA.md`** · official: https://docs.byreal.io/turing-test-hackathon/evaluation-criteria
+DoraHacks. Full rubric + awards (official): https://docs.byreal.io/turing-test-hackathon/evaluation-criteria
 **Submission repo (operator-linked):** https://github.com/JannetEkka/smart-money-trading
 
 **Tracks entered (max 2 allowed — operator chose BOTH, 2026-06-16):**
@@ -71,7 +71,7 @@ flowchart LR
 ## BUIDL submission
 See `BUIDL.md` (paste-ready) + the **shared blocks** in `../README.md`. Lead with "smart-money +
 on-chain anomaly detection → Discord/Telegram, with an on-chain ERC-8004 identity and a
-transparency-first 'why' on every alert." Full judging rubric in `CRITERIA.md`.
+transparency-first 'why' on every alert." Official judging rubric: the Byreal evaluation-criteria page.
 
 ## Build status + remaining
 
@@ -85,9 +85,10 @@ transparency-first 'why' on every alert." Full judging rubric in `CRITERIA.md`.
 - ✅ `agent_card.json` (ERC-8004 card) · `hardhat.config.js` + `scripts/deploy.js` + `package.json`
   (Mantle Sepolia/mainnet deploy + Explorer verify).
 
-**Remaining — operator (see `SUBMISSION.md` for the runbook):**
+**Remaining — operator:**
 - [ ] 👤 Deploy + verify `SMTAgentRegistry` on Mantle (testnet ok); `registerAgent` + a few `recordDecision`.
 - [ ] 👤 Demo video ≥2 min + DoraHacks form (repo · tracks · deployed address · video).
 - [ ] (Track 2, optional) Bybit execution adapter + macro-REGIME Mantle contract.
 
-See `SUBMISSION.md` (step-by-step) · `CRITERIA.md` (rubric) · `integration_stub.py` (original shapes).
+See `integration_stub.py` for the alert-bot + agent-card shapes. (Step-by-step deploy/submit runbook +
+the full rubric are kept in the operator's local notes, not in the public repo.)

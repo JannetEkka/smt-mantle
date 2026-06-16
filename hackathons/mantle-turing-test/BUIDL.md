@@ -3,7 +3,7 @@
 > Tracks entered (both; max 2 allowed): **AI Alpha & Data** (Mirana Ventures) — lead, smart-money +
 > on-chain anomaly detection via Telegram/Discord, signal-only — and **AI Trading & Strategy** (Bybit +
 > BGA) — on-chain extension (Bybit adapter + macro-REGIME Mantle contract). Theme: **radical
-> transparency**. Full rubric → `CRITERIA.md`.
+> transparency**. Official rubric: docs.byreal.io/turing-test-hackathon/evaluation-criteria.
 
 ---
 
@@ -70,4 +70,4 @@ learning + validation stack, and an XAI layer. Fluent in Vertex AI / BigQuery ML
 - Open-source repo (public). **Tuned parameters / per-pair research kept private** (the edge);
   architecture, XAI, and learning approach are fully open.
 - Entered **AI Alpha & Data** (lead, signal-only) + **AI Trading & Strategy** (on-chain extension);
-  ERC-8004 identity on Mantle. Grand Champion / 20-Deploy awards need Mantle deployment — see `CRITERIA.md`.
+  ERC-8004 identity on Mantle. Grand Champion / 20-Deploy awards need Mantle deployment.
