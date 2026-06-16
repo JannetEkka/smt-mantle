@@ -1,0 +1,10 @@
+# Hardhat / node toolchain — generated locally, never committed
+node_modules/
+artifacts/
+cache/
+typechain-types/
+.env
+
+# These ARE deliverables — re-include despite the repo-root blanket `*.json` ignore.
+!agent_card.json
+!package.json

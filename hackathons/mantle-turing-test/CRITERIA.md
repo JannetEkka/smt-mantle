@@ -1,77 +1,112 @@
-# Turing Test Hackathon 2026 — official tracks, judging & awards
+# The Turing Test Hackathon 2026 — tracks, judging requirements & criteria
 
-> Transcribed from the operator's brief (2026-06-16). Authoritative source:
-> https://docs.byreal.io/turing-test-hackathon/evaluation-criteria · Judging-by-prize spreadsheet:
-> https://docs.google.com/spreadsheets/d/1TMWhQ8cKp_1NF1ZelxtBGIF6l3bQZTA0ipjSREiqRhM/edit?gid=1857369098
-> **$100K total.** Every track project can be executed by an AI agent end-to-end, or via AI-assisted / human-developed tools.
+> **Phase 2 "AI Awakening" · Mantle ecosystem · $100K total · submitted via DoraHacks.**
+> Official rubric: https://docs.byreal.io/turing-test-hackathon/evaluation-criteria ·
+> judging-by-prize sheet: https://docs.google.com/spreadsheets/d/1TMWhQ8cKp_1NF1ZelxtBGIF6l3bQZTA0ipjSREiqRhM
+> *Transcribed from the operator's brief, 2026-06-16. If this drifts from the official page, the official page wins.*
+> **Premise:** every track project may be executed end-to-end by an AI agent, or via AI-assisted / human-built tools.
 
-## Tracks (6) + title sponsors
+---
+
+## 1. Tracks (6) + title sponsors
 
 | Track | Sponsor(s) | Description |
 |---|---|---|
-| **AI Trading & Strategy** ⬅ *entered* | Bybit + BGA | AI quant bots and macro-driven smart contracts, with Python and Solidity templates and Bybit API support. |
-| **AI Alpha & Data** ⬅ *entered* | Mirana Ventures | Smart money tracking and on-chain anomaly detection bots via Telegram and Discord. |
+| **AI Trading & Strategy** ⬅ *SMT entered* | Bybit + BGA | AI quant bots and macro-driven smart contracts, with Python and Solidity templates and Bybit API support. |
+| **AI Alpha & Data** ⬅ *SMT entered* | Mirana Ventures | Smart money tracking and on-chain anomaly detection bots via Telegram and Discord. |
 | **AI x RWA** | Mantle Network | Dynamic yield strategies and automated risk management for assets including USDY and mETH, built on Mantle's RWA infrastructure. |
-| **Consumer & Viral DApps** | Animoca Minds, OpenCheck, Animoca Brands | Gamified trading interfaces and shareable consumer applications. |
+| **Consumer & Viral DApps** | Animoca Minds · OpenCheck · Animoca Brands | Gamified trading interfaces and shareable consumer applications. |
 | **AI DevTools** | Tencent Cloud | Smart gas-optimisation tools and Mantle-specific audit assistants. |
 | **Agentic Wallets & Economy** | Byreal | Agentic wallet economies built using the Byreal Skills CLI. |
 
-**SMT entered AI Trading & Strategy + AI Alpha & Data (max 2 tracks allowed).**
+**SMT entered AI Trading & Strategy + AI Alpha & Data (max 2 tracks per project).** A project must be
+nominated from ≥1 track to be eligible for the Grand Champion.
 
-## Judging process — two scorecards per judge
-Every judge completes **two** scorecards per project; both must be submitted for a score to count.
-1. **General scorecard** (all tracks) — Mantle's core dimensions: Technical, Ecosystem Fit, Business
-   Potential, Innovation, User Experience.
-2. **Track-specific scorecard** — customised by each track's title sponsor (their focus areas).
+---
 
-## Prizes
+## 2. Judging process — TWO scorecards per judge
 
-### Grand Champion (cross-track, highest honor)
-Open to all tracks; must perform across all dimensions.
+Every judge submits **two** scorecards per project; **both must be submitted for a score to count.**
+
+1. **General scorecard** (universal, all tracks) — Mantle's core dimensions:
+   **Technical · Ecosystem Fit · Business Potential · Innovation · User Experience.**
+2. **Track-specific scorecard** — customised by each track's **title sponsor**, reflecting that
+   sponsor's focus areas + unique criteria (the per-track "Part a / Part b / Grade" grids in the brief).
+
+---
+
+## 3. Prizes & their criteria
+
+### 3a. Grand Champion (highest honor, cross-track)
+The project that best demonstrates excellence across technology, innovation, and ecosystem
+contribution — regardless of track. Open to all tracks; must perform across **all** dimensions.
 
 | Dimension | Weight | Description |
 |---|---|---|
 | Technical Depth | 30% | AI × on-chain integration, architecture completeness, code quality |
 | Innovation | 25% | Originality; whether it proposes a new AI × Web3 paradigm |
-| Mantle Ecosystem Contribution | 25% | Substantive use of Mantle + long-term ecosystem value |
-| Product Completeness | 20% | Runnable demo, UX, scalability |
+| Mantle Ecosystem Contribution | 25% | Substantive use of Mantle + long-term value to the ecosystem |
+| Product Completeness | 20% | Runnable demo, user experience, scalability |
 
-**Requirements:** deployed on **Mantle Network**; open-source repo + runnable demo + project pitch;
+**Requirements:** deployed on **Mantle Network** · open-source repo + runnable demo + project pitch ·
 nominated from ≥1 track.
 
-### By-track first prizes
+### 3b. By-track First Prize (per track, sponsor-scored)
+Each track awards a first prize judged on the **title sponsor's own scorecard**:
 Trading & Strategy (Bybit + BGA) · Alpha & Data (Mirana Ventures) · AI x RWA (Mantle Network) ·
 Agentic Economy (Byreal) · DevTools (Tencent Cloud) · Consumer Viral DApp (Animoca Minds / OpenCheck /
-Animoca Brands). Each scored on the track sponsor's own scorecard (the per-track grids in the brief).
+Animoca Brands). *(The sponsor grids — "Part a / Part b / Grade" — live in the official sheet.)*
 
-### Community Voting
-Entirely community-decided (greatest public appeal/reach). All submitted projects auto-eligible;
-voting on **X**; most votes wins. Wins on: a clear/compelling demo (even for non-technical viewers),
-resonance with real pain points, and community presence + shareability.
+### 3c. Community Voting (public choice)
+Decided entirely by the community — the project with the greatest public appeal and reach.
+- **How it works:** all submitted projects are automatically eligible · voting is open to everyone on
+  **X** · the project with the most votes wins.
+- **What wins here:** a clear, compelling demo (even for non-technical viewers) · a solution that
+  resonates with real pain points · strong community presence + shareability.
 
-### Best UI/UX Award
+### 3d. Best UI/UX Award
+Most outstanding user experience + interface design.
 
 | Dimension | Weight | Description |
 |---|---|---|
 | Visual Design | 30% | Aesthetic quality, design consistency, brand identity |
-| Interaction & Flow | 30% | Smoothness, user guidance, responsiveness |
-| AI Interaction Design | 25% | AI presented in a natural, user-friendly way |
-| Accessibility | 15% | Beginner-friendliness; lowering the Web3 barrier |
+| Interaction & Flow | 30% | Smoothness of interactions, user guidance, responsiveness |
+| AI Interaction Design | 25% | Whether AI capabilities are presented in a natural, user-friendly way |
+| Accessibility | 15% | Beginner-friendliness; lowering the Web3 barrier for new users |
 
-**Requirements:** runnable frontend; demo video or public link.
+**Requirements:** a runnable frontend interface · a demo video or publicly accessible link.
 
-### 20 Project Deployment Award (first-come, 20 spots, no judge scoring)
-Meet ALL:
-- **Technical:** contract deployed on Mantle Mainnet or Testnet; verified on Mantle Explorer; ≥1
-  AI-powered function callable on-chain (agent trigger / inference written on-chain / automated execution).
-- **Product:** frontend publicly accessible (not localhost); deployment address in the DoraHacks
-  submission; demo video ≥2 min walking the core use case.
-- **Docs:** open-source GitHub repo with README (setup, architecture, deployed contract address).
+### 3e. 20 Project Deployment Award (first-come, 20 spots, NO judge scoring)
+Awarded to the first 20 projects that clear every bar below (first-come, first-served):
 
-## What this means for SMT (gap → bridge)
-SMT is off-chain Python today; the **Mantle-deployment requirement** gates Grand Champion + the
-20-Deploy award. Bridge = the **ERC-8004 identity/reputation contract** (reputation from `groundtruth`
-+2h/+4h accuracy) + a minimal on-chain decision/anomaly record → satisfies "≥1 AI function callable
-on-chain." Per-track first prizes (esp. **Alpha & Data**, signal-only) are reachable off-chain; the
-cross-track + deployment prizes need the Mantle piece. See this folder's `README.md` for the per-track
-fit + plan.
+- **Technical deployment**
+  - ✅ Smart contract deployed on Mantle **Mainnet or Testnet**
+  - ✅ Contract **verified** on Mantle Explorer
+  - ✅ **≥1 AI-powered function callable on-chain** (agent trigger / inference result written on-chain / automated execution)
+- **Product completeness**
+  - ✅ Frontend demo **publicly accessible** (not localhost)
+  - ✅ Deployment address included in the **DoraHacks** submission
+  - ✅ Demo video **≥2 min** walking the core use case
+- **Documentation**
+  - ✅ Open-source GitHub repo with README (setup, architecture overview, deployed contract address)
+
+> No judge scoring — but real bars. Meet all and the award is yours.
+
+---
+
+## 4. Requirements summary (what EVERY serious submission needs)
+1. **Deployed on Mantle** (mainnet or testnet), contract **verified** on Mantle Explorer.
+2. **Open-source GitHub repo** + README (setup, architecture, contract address).
+3. **Runnable demo** — publicly accessible frontend (not localhost) + **demo video ≥2 min**.
+4. **Project pitch** + nomination from ≥1 track; **deployment address in the DoraHacks submission.**
+
+## 5. What SMT targets (fit → bridge)
+- **AI Alpha & Data (Mirana)** — primary, ship-ready: smart-money + on-chain anomaly alerts to
+  Discord/Telegram with a ≤500-char "why" (`alert_bot.py`).
+- **AI Trading & Strategy (Bybit + BGA)** — on-chain extension (Bybit adapter + macro-REGIME contract).
+- **Grand Champion + 20-Deploy** — unlocked by deploying `contracts/SMTAgentRegistry.sol` on Mantle
+  (the `recordDecision` call = the on-chain AI function; reputation = +2h/+4h accuracy).
+- **Community Voting + Best UI/UX** — NOT track-locked; the @JTechSMT voice + the Streamlit dashboard +
+  the per-trade "why" cards target these directly.
+
+See `README.md` (per-track fit + plan) and `SUBMISSION.md` (deploy runbook + step-by-step submit).

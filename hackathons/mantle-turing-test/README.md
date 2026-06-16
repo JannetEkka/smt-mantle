@@ -73,13 +73,21 @@ See `BUIDL.md` (paste-ready) + the **shared blocks** in `../README.md`. Lead wit
 on-chain anomaly detection → Discord/Telegram, with an on-chain ERC-8004 identity and a
 transparency-first 'why' on every alert." Full judging rubric in `CRITERIA.md`.
 
-## Plan / status
-- [ ] Wire one FREE on-chain source (Etherscan V2 top-whale tx, or Dune) → context signals.
-- [ ] Run whale+onchain+regime personas → JUDGE → ≤500-char alert.
-- [ ] Discord webhook (reuse `v4/trade_alert_logger.py`) + Telegram mirror.
-- [ ] ERC-8004 agent-card JSON + identity NFT mint (Mantle testnet); reputation = logged +2h/+4h accuracy.
-- [ ] **(Track 2)** Bybit execution adapter + minimal macro-REGIME Mantle contract (Solidity).
-- [ ] Verify contract on Mantle Explorer; ≥1 AI function callable on-chain (20-Deploy award).
-- [ ] Public frontend + demo video (≥2 min) + README.
+## Build status + remaining
 
-See `integration_stub.py` for the alert-bot + agent-card shapes.
+**Built + tested this session** (`pytest tests/test_mantle_bridge_smoke.py` — 7 green; full suite 197):
+- ✅ `contracts/SMTAgentRegistry.sol` — ERC-8004-style identity + reputation + on-chain
+  `recordDecision` (the AI function callable on-chain) + `gradeDecision` (reputation from +2h/+4h).
+- ✅ `onchain.py` — web3.py bridge, graceful-degrade (no web3/RPC → signal-only); pure encoders +
+  agent-card builder unit-tested.
+- ✅ `alert_bot.py` — personas → JUDGE → ≤500-char "why" alert → Discord/Telegram + optional on-chain
+  write. Runs **offline** (`python3 alert_bot.py`).
+- ✅ `agent_card.json` (ERC-8004 card) · `hardhat.config.js` + `scripts/deploy.js` + `package.json`
+  (Mantle Sepolia/mainnet deploy + Explorer verify).
+
+**Remaining — operator (see `SUBMISSION.md` for the runbook):**
+- [ ] 👤 Deploy + verify `SMTAgentRegistry` on Mantle (testnet ok); `registerAgent` + a few `recordDecision`.
+- [ ] 👤 Demo video ≥2 min + DoraHacks form (repo · tracks · deployed address · video).
+- [ ] (Track 2, optional) Bybit execution adapter + macro-REGIME Mantle contract.
+
+See `SUBMISSION.md` (step-by-step) · `CRITERIA.md` (rubric) · `integration_stub.py` (original shapes).
