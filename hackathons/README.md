@@ -27,11 +27,17 @@ signal product; Trading & Strategy = the on-chain/Bybit stretch). BNB has the mo
 
 ## Alpha boundary (public repo, private edge)
 
-All three require public/open-source repos. The moat is **not** the architecture (multi-agent +
-judge + RL is a known, respectable pattern judges *reward*). The moat is **(a)** per-pair research
+All require public/open-source repos. The moat is **not** the architecture (multi-agent + judge + RL
+is a known, respectable pattern judges *reward*). The moat is **(a)** per-pair research
 (`docs/research/`), **(b)** the *learned* params (`v4/learned_params.json` + its corpus), **(c)** the
-specific calibrated thresholds / HARD-BLOCK cells. **Keep those untracked/private** in any repo we
-point a hackathon at. Submit the brain + XAI story; never the tuned numbers.
+specific calibrated thresholds / HARD-BLOCK cells, **(d)** the **WEEX-verified Streamlit dashboard +
+raw simulated funds / PnL ledger / per-version journey**. **Keep all of those private.**
+
+**Public frontend = GitHub Pages `https://jannetekka.github.io/smart-money-trading/` (curated SMT
+World) — NEVER the Streamlit dashboard** (that one is WEEX-linked and shows funds/PnL/versions =
+alpha). Judges get verifiability from the **on-chain +2h/+4h accuracy reputation + the open
+methodology** (validation gates, faithfulness), NOT from the equity curve. Submit the brain + XAI
+story + on-chain proof; never the tuned numbers or the raw PnL.
 
 ---
 

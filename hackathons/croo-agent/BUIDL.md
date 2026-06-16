@@ -7,7 +7,7 @@
 - **Logo:** the 480×480 PNG.
 - **Category:** AI / Robotics · **Is this an AI Agent?** **Yes**
 - **GitHub:** `https://github.com/JannetEkka/smt-weex-trading-bot` *(point to the public showcase repo once it exists)*
-- **Project website:** `https://smt-aiquant-bot.streamlit.app/`
+- **Project website:** `https://jannetekka.github.io/smart-money-trading/`
 - **Demo video:** *(≤5 min — show one agent hiring another over A2A; add after build)*
 - **Social:** `https://x.com/JTechSMT` · LinkedIn
 

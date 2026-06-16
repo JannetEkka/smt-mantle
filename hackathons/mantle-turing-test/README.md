@@ -19,20 +19,23 @@ That is literally SMT. The whale + on-chain + regime personas score smart-money 
 anomalies; the Judge aggregates; each call broadcasts to **Discord/Telegram** with a ≤500-char "why."
 Signal-only, no execution — and the hackathon's *radical-transparency* theme IS our XAI story.
 
-## Track 2 — AI Trading & Strategy (Bybit + BGA) — honest gap
-Track ask: *"AI quant bots and macro-driven smart contracts, with Python and Solidity templates and
-Bybit API support."*
+## Track 2 — AI Trading & Strategy (Bybit + BGA) — more reachable than it looks
+BGA's Part B (50 pts) rewards **transparency + reducing the retail-vs-institutional information gap —
+explicitly NOT the highest PnL** ("we are rewarding better systems"). That is SMT's thesis exactly.
+And the technical criterion accepts **"meaningful use of Bybit API OR on-chain logic"** — so our Mantle
+contract satisfies it; **Bybit is optional upside, not required.**
 
-| Track wants | SMT has today | Gap / bridge |
+| Track wants | SMT has | Note |
 |---|---|---|
-| AI quant bot (Python) | ✅ the whole `smt/` engine | — |
-| Bybit API support | uses **WEEX** | add a Bybit execution adapter — `core/execution` already anticipates per-exchange adapters (multi-exchange note, PLAN.md) |
-| macro-driven smart contract (Solidity / Mantle) | none (off-chain Python) | a small Mantle contract that records/executes the Judge's macro-**REGIME** call (persona → on-chain trigger) |
-| deployed on Mantle | off-chain | REQUIRED for Grand Champion + 20-Deploy award (`CRITERIA.md`) |
+| AI quant bot (Python) | ✅ the whole `smt/` engine | core |
+| Bybit API **or on-chain logic** | ✅ `SMTAgentRegistry` on-chain logic | Bybit adapter = optional upside |
+| Transparency & verifiability (7.5) | ✅ white-box votes + faithfulness + on-chain reputation | strong |
+| Strategy design & risk mgmt (7.5) | ✅ validation gates (DSR/PBO/CPCV) + fee-floor + drawdown guardian | strong |
+| Deployed on Mantle | 👤 deploy `SMTAgentRegistry.sol` | Part A "Technical (15)" wants end-to-end on Mantle |
 
-> **Recommendation:** lead with **Alpha & Data** (ship-ready, no execution). Treat **Trading &
-> Strategy** as the on-chain extension — the ERC-8004 identity + a minimal Mantle "decision-record /
-> agent-trigger" contract is the smallest thing that satisfies "≥1 AI function callable on-chain."
+> **Recommendation:** both tracks share one Mantle deploy. Lead **Alpha & Data** on the **Trading
+> Strategy path** (verifiable edge + auditability + risk management — where Session F shines); pitch
+> **Trading & Strategy** on the **BGA ethos** (transparency / anti-information-asymmetry).
 
 ---
 
