@@ -2,7 +2,7 @@ name: Deploy SMT World dashboard to GitHub Pages
 
 on:
   push:
-    branches: [main, "claude/**"]
+    branches: [main]
     paths: ["smt_world/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
