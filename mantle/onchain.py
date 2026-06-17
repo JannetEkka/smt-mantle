@@ -20,9 +20,9 @@ from typing import Any, Dict, Optional
 
 log = logging.getLogger("smt.hackathons.mantle.onchain")
 
-# Mantle endpoints (verify current values at docs.mantle.xyz before mainnet).
+# Mantle endpoints (web-verified 2026-06-16: chainId 5003 testnet / 5000 mainnet).
 MANTLE_SEPOLIA = {"rpc": "https://rpc.sepolia.mantle.xyz", "chain_id": 5003,
-                  "explorer": "https://explorer.sepolia.mantle.xyz"}
+                  "explorer": "https://explorer.sepolia.mantle.xyz", "faucet": "https://faucet.sepolia.mantle.xyz"}
 MANTLE_MAINNET = {"rpc": "https://rpc.mantle.xyz", "chain_id": 5000,
                   "explorer": "https://explorer.mantle.xyz"}
 
