@@ -1,7 +1,9 @@
 # Turing Test Hackathon 2026 — BUIDL submission (paste-ready)
 
-> Track target: **AI Alpha & Data** (smart-money tracking + on-chain anomaly detection via
-> Telegram/Discord). Signal-only — no execution. Theme to lean on: **radical transparency**.
+> Tracks entered (both; max 2 allowed): **AI Alpha & Data** (Mirana Ventures) — lead, smart-money +
+> on-chain anomaly detection via Telegram/Discord, signal-only — and **AI Trading & Strategy** (Bybit +
+> BGA) — on-chain extension (Bybit adapter + macro-REGIME Mantle contract). Theme: **radical
+> transparency**. Official rubric: docs.byreal.io/turing-test-hackathon/evaluation-criteria.
 
 ---
 
@@ -22,9 +24,9 @@ Smart Money Trading (SMT)
 **Is this BUIDL an AI Agent?** **Yes**
 
 **Links**
-- GitHub: `https://github.com/JannetEkka/smt-weex-trading-bot`
-- Project website: `https://smt-aiquant-bot.streamlit.app/`
-- Demo video: *(optional — record a 2-min Streamlit + alert walkthrough; can add after submit)*
+- GitHub (submission repo): `https://github.com/JannetEkka/smt-mantle`
+- Project website: `https://jannetekka.github.io/smt-mantle/`
+- Demo video: *(record a ≥2-min walkthrough: public SMT World dashboard → alert with its "why" → the on-chain decision on Mantle Explorer)*
 - Social links: `https://x.com/JTechSMT` (SMT project) · `https://www.linkedin.com/in/jannet-akanksha-ekka-a18692122/`
 
 ---
@@ -43,8 +45,10 @@ and why*.
 - **White-box by design.** The decision *is* the weighted persona vote — there's no hidden layer to
   reverse-engineer. We also run a **counterfactual faithfulness check**: flip one persona's vote and
   confirm the decision moves the predicted way, so an attribution is only shipped if it's *real*.
-- **Honest track record.** Losses are logged as loudly as wins; the public dashboard shows per-pair
-  PnL vs. buy-and-hold.
+- **Verifiable WITHOUT leaking the edge.** The agent's +2h/+4h direction accuracy is recorded
+  on-chain as an auditable reputation, and the methodology (validation gates + faithfulness) is fully
+  open — judges can verify performance and inspect the logic. The tuned parameters, equity curve, and
+  version history stay private (the moat).
 - **On-chain identity + reputation (Mantle).** The agent mints an **ERC-8004** identity (agent card
   + endpoints) and accrues an on-chain reputation from its logged +2h/+4h direction accuracy — a
   verifiable, decentralized record of performance, exactly the benchmark this hackathon is built on.
@@ -67,4 +71,5 @@ learning + validation stack, and an XAI layer. Fluent in Vertex AI / BigQuery ML
 ## Submission notes
 - Open-source repo (public). **Tuned parameters / per-pair research kept private** (the edge);
   architecture, XAI, and learning approach are fully open.
-- AI Alpha & Data track; signal-only (no on-chain execution); ERC-8004 identity on Mantle.
+- Entered **AI Alpha & Data** (lead, signal-only) + **AI Trading & Strategy** (on-chain extension);
+  ERC-8004 identity on Mantle. Grand Champion / 20-Deploy awards need Mantle deployment.

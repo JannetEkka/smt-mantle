@@ -49,6 +49,7 @@ SMT_MODULES = [
     "smt.learning.validation.fdr",
     "smt.learning.validation.conformal",
     "smt.learning.validation.kde",
+    "smt.learning.validation.gate",
     "smt.learning.optimizer",
     "smt.learning.bandit",
     "smt.learning.reward",
@@ -56,6 +57,7 @@ SMT_MODULES = [
     "smt.learning.hierarchical",
     "smt.learning.synthetic",
     "smt.learning.faithfulness",
+    "smt.learning.groundtruth",
 ]
 
 
