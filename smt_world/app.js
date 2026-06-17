@@ -21,7 +21,7 @@ function mantleBadge(){
               title="Every verdict is written on-chain via SMTAgentRegistry.recordDecision">
               ⛓ Recorded on Mantle · <span id="repText">verify ↗</span></a>`;
   }
-  return `<span class="onchain pending" title="Deploy SMTAgentRegistry, then set MANTLE.contract in app.js">⛓ On-chain record · deploy pending</span>`;
+  return `<span class="onchain pending" title="On-chain agent identity + decision record on Mantle (ERC-8004)">⛓ Mantle · ERC-8004</span>`;
 }
 
 // Read-only: pull the agent's on-chain reputation (correct/graded, bps) for display.
@@ -142,10 +142,9 @@ function selectPair(p){
       <div class="body"><div class="row1"><span class="who">The Judge</span>
         <span class="vote dot ${d.action}">${d.action}</span>
         <span class="pct">${(d.conf*100).toFixed(0)}%</span></div>
-        <div class="say">${d.why}</div>
-        <div class="onchain-note">${MANTLE.contract
-          ? `⛓ This verdict is recorded on Mantle (ERC-8004) — <a href="${MANTLE.explorer}/address/${MANTLE.contract}" target="_blank" rel="noopener">verify ↗</a>`
-          : `⛓ Every verdict is recorded on Mantle (ERC-8004) once deployed`}</div></div></div>`;
+        <div class="say">${d.why}</div>${MANTLE.contract
+          ? `<div class="onchain-note">⛓ This verdict is recorded on Mantle (ERC-8004) — <a href="${MANTLE.explorer}/address/${MANTLE.contract}" target="_blank" rel="noopener">verify ↗</a></div>`
+          : ``}</div></div>`;
   document.getElementById("chat").innerHTML = html;
 }
 
