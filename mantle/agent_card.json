@@ -12,7 +12,7 @@
   },
   "registry": {
     "chain": "mantleSepolia",
-    "contract": "<deployed-SMTAgentRegistry-address>",
+    "contract": "0x08E24aC7bb5037bB7018ed89ECc53D222210EEc2",
     "agentId": null
   },
   "reputation": "on-chain correct/graded from +2h/+4h direction accuracy",
