@@ -18,26 +18,12 @@ module.exports = {
       accounts: PK ? [PK] : [],
     },
   },
-  // Verify on MantleScan (the Etherscan-family explorer hardhat-verify is built for).
-  // Get a FREE key at mantlescan.xyz → API Keys, then in Cloud Shell:
-  //   export MANTLESCAN_API_KEY=yourkey
+  // Etherscan V2 (multichain): ONE etherscan.io key verifies on every supported chain
+  // (Mantle, BSC, … 60+) — routed by chainId. Use the operator's EXISTING key
+  // (GCP secret `etherscan-api-key`), NOT a per-explorer key. In Cloud Shell:
+  //   export ETHERSCAN_API_KEY=<your etherscan.io key>
   //   npx hardhat verify --network mantleSepolia 0x08E24aC7bb5037bB7018ed89ECc53D222210EEc2
   etherscan: {
-    apiKey: {
-      mantleSepolia: process.env.MANTLESCAN_API_KEY || "",
-      mantle: process.env.MANTLESCAN_API_KEY || "",
-    },
-    customChains: [
-      {
-        network: "mantleSepolia",
-        chainId: 5003,
-        urls: { apiURL: "https://api-sepolia.mantlescan.xyz/api", browserURL: "https://sepolia.mantlescan.xyz" },
-      },
-      {
-        network: "mantle",
-        chainId: 5000,
-        urls: { apiURL: "https://api.mantlescan.xyz/api", browserURL: "https://mantlescan.xyz" },
-      },
-    ],
+    apiKey: process.env.ETHERSCAN_API_KEY || "",
   },
 };
