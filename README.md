@@ -33,7 +33,7 @@ python3 mantle/alert_bot.py # offline demo: personas → Judge → a ≤500-char
 - Contract: **`mantle/contracts/SMTAgentRegistry.sol`** — ERC-8004-style identity
   + reputation + **`recordDecision`** (the AI function callable on-chain) + `gradeDecision` (reputation
   from realized +2h/+4h accuracy). Deploy/verify runbook + the Python bridge (`onchain.py`) are in that folder.
-- Deployed address: _added on deploy (Mantle Sepolia/mainnet)._
+- **Deployed (Mantle Sepolia):** [`0x08E24aC7bb5037bB7018ed89ECc53D222210EEc2`](https://explorer.sepolia.mantle.xyz/address/0x08E24aC7bb5037bB7018ed89ECc53D222210EEc2) — the live `SMTAgentRegistry`; `recordDecision` is the AI function callable on-chain.
 
 ## Live & links
 - **Public dashboard (SMT World):** https://jannetekka.github.io/smt-mantle/

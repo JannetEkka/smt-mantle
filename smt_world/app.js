@@ -7,7 +7,7 @@
 // shows the LIVE on-chain reputation. Empty contract = "deploy pending" (still valid).
 const MANTLE = {
   network:  "Mantle Sepolia",
-  contract: "",                                  // 0x… deployed SMTAgentRegistry
+  contract: "0x08E24aC7bb5037bB7018ed89ECc53D222210EEc2",   // deployed SMTAgentRegistry (Mantle Sepolia)
   agentId:  1,
   rpc:      "https://rpc.sepolia.mantle.xyz",
   explorer: "https://explorer.sepolia.mantle.xyz",
@@ -31,9 +31,11 @@ async function refreshReputation(){
   try{
     const provider = new ethers.JsonRpcProvider(MANTLE.rpc);
     const c = new ethers.Contract(MANTLE.contract, REGISTRY_ABI, provider);
-    const bps = await c.reputationBps(MANTLE.agentId);
+    const bps = Number(await c.reputationBps(MANTLE.agentId));
     const el = document.getElementById("repText");
-    if(el) el.textContent = `on-chain accuracy ${(Number(bps)/100).toFixed(0)}% · verify ↗`;
+    // Only surface a % once decisions have actually been graded on-chain (bps>0);
+    // otherwise keep the plain "verify ↗" link rather than a misleading 0%.
+    if(el && bps > 0) el.textContent = `on-chain accuracy ${(bps/100).toFixed(0)}% · verify ↗`;
   }catch(e){ /* keep the static badge — never break the demo */ }
 }
 
