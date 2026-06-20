@@ -18,19 +18,25 @@ module.exports = {
       accounts: PK ? [PK] : [],
     },
   },
-  // Mantle explorers are Blockscout — no API key required.
+  // Verify on MantleScan (the Etherscan-family explorer hardhat-verify is built for).
+  // Get a FREE key at mantlescan.xyz → API Keys, then in Cloud Shell:
+  //   export MANTLESCAN_API_KEY=yourkey
+  //   npx hardhat verify --network mantleSepolia 0x08E24aC7bb5037bB7018ed89ECc53D222210EEc2
   etherscan: {
-    apiKey: { mantleSepolia: "blockscout", mantle: "blockscout" },
+    apiKey: {
+      mantleSepolia: process.env.MANTLESCAN_API_KEY || "",
+      mantle: process.env.MANTLESCAN_API_KEY || "",
+    },
     customChains: [
       {
         network: "mantleSepolia",
         chainId: 5003,
-        urls: { apiURL: "https://explorer.sepolia.mantle.xyz/api", browserURL: "https://explorer.sepolia.mantle.xyz" },
+        urls: { apiURL: "https://api-sepolia.mantlescan.xyz/api", browserURL: "https://sepolia.mantlescan.xyz" },
       },
       {
         network: "mantle",
         chainId: 5000,
-        urls: { apiURL: "https://explorer.mantle.xyz/api", browserURL: "https://explorer.mantle.xyz" },
+        urls: { apiURL: "https://api.mantlescan.xyz/api", browserURL: "https://mantlescan.xyz" },
       },
     ],
   },
