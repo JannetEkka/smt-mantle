@@ -58,6 +58,12 @@ contextual bandit, seeded offline from its own logged history) tunes the engine 
 outcomes; an un-disableable fee floor + per-pair, multi-lane discipline keep it grounded; validation
 gates (Deflated Sharpe / PBO / CPCV / conformal) reject overfit configurations before they ship.
 
+## Track record
+SMT isn't vaporware: a live multi-persona daemon ran in **real time Jan–May 2026** — thousands of
+executed decisions across 8 perpetual-futures pairs, every win *and* loss logged. That corpus is what
+the learning loop trains on and the validation gates guard against (we treat honesty about drawdowns
+as a feature). The raw equity curve + tuned parameters stay private (the edge); the method is open.
+
 ## Team
 **One-person team — Jannet Akanksha Ekka.** Google Cloud AI Engineer; 4+ years enterprise software
 at Deloitte, then a deliberate move into AI/ML/GenAI and agentic systems (Rank 1, 4.09/5 GPA, PG
@@ -69,7 +75,8 @@ learning + validation stack, and an XAI layer. Fluent in Vertex AI / BigQuery ML
 `jtech26smt@gmail.com` · LinkedIn (above) · X `@EkkaJanny96`
 
 ## Submission notes
-- Open-source repo (public). **Tuned parameters / per-pair research kept private** (the edge);
-  architecture, XAI, and learning approach are fully open.
+- Open-source repo (public). **Tuned parameters / per-pair research / raw equity curve kept private**
+  (the edge); architecture, XAI, and learning approach are fully open. SMT ran live Jan–May 2026 (see
+  Track record) — verified by the open method + on-chain reputation, not an exposed ledger.
 - Entered **AI Alpha & Data** (lead, signal-only) + **AI Trading & Strategy** (on-chain extension);
   ERC-8004 identity on Mantle. Grand Champion / 20-Deploy awards need Mantle deployment.
